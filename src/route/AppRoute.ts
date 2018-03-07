@@ -3,7 +3,7 @@ import { BaseRoute } from "./BaseRoute";
 import { AppService } from "../service/AppService";
 import { Validate } from "../utilities/Validate";
 import { RequestedType,validationSchema } from "../mapping/validationSchema";
-
+//import {io} from "../index";
 
 /**
  * / route
@@ -11,7 +11,7 @@ import { RequestedType,validationSchema } from "../mapping/validationSchema";
  * @class Route
  */
 export class AppRoute  {
-
+   
 
   /**
    * Create the routes.
@@ -26,6 +26,11 @@ export class AppRoute  {
     //initialize th route class
       let route=new AppRoute();
       let appService=new AppService();
+      //io.emit('message', 'm123');
+    //   socket.socket.on('message1', (m: string) => {
+    //     console.log('[server](message1): %s', JSON.stringify(m));
+        
+    // });
     //log
     console.log("[Route::create] Creating  route.");
     router.get("/:id", (req: Request, res: Response, next: NextFunction) => {
