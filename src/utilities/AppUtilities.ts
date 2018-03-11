@@ -40,9 +40,9 @@ export class AppUtilities {
    * @return void
    */
   public static async getInformation(url:string,options:any) {
-    console.log('get AppUtilities');
+    //console.log('get AppUtilities',options);
     try{
-      return await requestify.request(url, options);
+       return await requestify.request(url, options);
       }catch(err){
       console.log(err)
       

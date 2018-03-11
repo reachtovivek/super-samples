@@ -31,19 +31,33 @@ export class AppRoute  {
     //     console.log('[server](message1): %s', JSON.stringify(m));
         
     // });
-    //log
-    console.log("[Route::create] Creating  route.");
-    router.get("/:id", (req: Request, res: Response, next: NextFunction) => {
-      console.log('route get')
-      let isValidate=Validate.validate(req,[validationSchema.type1,validationSchema.type1,validationSchema.type1],RequestedType.HEADERS,RequestedType.BODY,RequestedType.PARAM);
-      if(!isValidate.err){
-        route.index(req, res, next);
-      }else{
-        appService.get();
-      }
 
-    //  route.index(req, res, next);
-    });
+      router.get("/informationRetrieval", async (req: Request, res: Response, next: NextFunction) => {
+          //console.log('route informationRetrieval get')
+          // let isValidate=Validate.validate(req,[validationSchema.type1,validationSchema.type1,validationSchema.type1],RequestedType.HEADERS,RequestedType.BODY,RequestedType.PARAM);
+          // if(!isValidate.err){
+          //     route.index(req, res, next);
+          // }else{
+             let data= await appService.getInformationRetrieval(req);
+              res.json(JSON.parse(data.body));
+              res.end();
+         // }
+
+
+      });
+      router.get("/informationRetrieval1", async (req: Request, res: Response, next: NextFunction) => {
+          console.log('route informationRetrieval get')
+          // let isValidate=Validate.validate(req,[validationSchema.type1,validationSchema.type1,validationSchema.type1],RequestedType.HEADERS,RequestedType.BODY,RequestedType.PARAM);
+          // if(!isValidate.err){
+          //     route.index(req, res, next);
+          // }else{
+          let data= await appService.getInformationRetrieval(req);
+          res.json(JSON.parse(data.body));
+          res.end();
+          // }
+
+
+      });
     router.post("/", (req: Request, res: Response, next: NextFunction) => {
       route.index(req, res, next);
     });
